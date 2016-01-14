@@ -10,7 +10,7 @@ defmodule GenComp do
       # Start the endpoint when the application starts
       supervisor(GenComp.Endpoint, []),
       # Start the Ecto repository
-      # supervisor(GenComp.Repo, []),
+      supervisor(GenComp.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(GenComp.Worker, [arg1, arg2, arg3]),
     ]

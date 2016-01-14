@@ -3,7 +3,7 @@
 <table class="table">
     <%= for competitor <- @competitors do %>
         <tr>
-            <td><b><%= first_name(competitor) %></b> <b><%= last_name(competitor) %></b> (<%= competitor.id %>)</td>
+            <td><%= render "competitor.html", competitor: competitor %></td>
             <td><%= link "View", to: competitor_path(@conn, :show, competitor.id) %></td>
         </tr>
     <% end %>

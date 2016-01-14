@@ -1,0 +1,2 @@
+<h1>Showing Competitor</h1>
+<%= render "competitor.html", competitor: @competitor %> 

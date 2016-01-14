@@ -1,0 +1,1 @@
+<b><%= first_name(@competitor) %> <%= last_name(@competitor) %></b> (<%= @competitor.id %>)
