@@ -15,6 +15,8 @@ defmodule GenComp.Router do
 
   scope "/", GenComp do
     pipe_through :browser # Use the default browser stack
+    get "/competitors", CompetitorController, :index
+    get "/competitors/:id", CompetitorController, :show
 
     get "/", PageController, :index
   end

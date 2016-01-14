@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :gen_comp, GenComp.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "seanchen",
+  password: "seanchen",
   database: "gen_comp_dev",
   hostname: "localhost",
   pool_size: 10
