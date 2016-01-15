@@ -18,7 +18,7 @@ defmodule GenComp.CompetitorController do
     end
 
     def create(conn, %{"competitor" => competitor_params}) do
-        changeset = Competitor.changeset(%Competitor{}, competitor_params)
+        changeset = Competitor.registration_changeset(%Competitor{}, competitor_params)
         case Repo.insert(changeset) do
             {:ok, competitor} ->
                 conn

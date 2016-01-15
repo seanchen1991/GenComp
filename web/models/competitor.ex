@@ -28,6 +28,7 @@ defmodule GenComp.Competitor do
         |> changeset(params)
         |> cast(params, ~w(password), [])
         |> validate_length(:password, min: 6, max: 100)
+        # |> validate_confirmation(:password, message: "Does not match password")
         |> put_pass_hash()
     end
 
