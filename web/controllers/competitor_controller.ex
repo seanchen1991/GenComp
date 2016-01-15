@@ -23,6 +23,7 @@ defmodule GenComp.CompetitorController do
         case Repo.insert(changeset) do
             {:ok, competitor} ->
                 conn
+                |> GenComp.Auth.login(competitor)
                 |> put_flash(:info, "#{competitor.first_name} #{competitor.last_name} has registered!")
                 |> redirect(to: competitor_path(conn, :index))
             {:error, changeset} ->

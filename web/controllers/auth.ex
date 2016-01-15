@@ -10,4 +10,11 @@ defmodule GenComp.Auth do
         competitor = competitor_id && repo.get(GenComp.Competitor, competitor_id)
         assign(conn, :current_competitor, competitor)
     end
+
+    def login(conn, competitor) do
+        conn
+        |> assign(:current_competitor, competitor)
+        |> put_session(:competitor_id, competitor.id)
+        |> configure_session(renew: true)
+    end
 end
