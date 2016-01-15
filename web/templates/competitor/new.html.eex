@@ -1,17 +1,27 @@
 <h1>New Competitor</h1>
 
 <%= form_for @changeset, competitor_path(@conn, :create), fn f -> %>
+    <%= if @changeset.action do %>
+        <div class="alert alert-danger">
+            <p>Oops, something went wrong!</p>
+        </div>
+    <% end %>
+
     <div class="form-group">
         <%= text_input f, :first_name, placeholder: "First name", class: "form-control" %>
+        <%= error_tag f, :first_name %>
     </div>
     <div class="form-group">
         <%= text_input f, :last_name, placeholder: "Last name", class: "form-control" %>
+        <%= error_tag f, :last_name %>
     </div>
     <div class="form-group">
         <%= text_input f, :email, placeholder: "Email", class: "form-control" %>
+        <%= error_tag f, :email %>
     </div>
     <div class="form-group">
         <%= password_input f, :password, placeholder: "Password", class: "form-control" %>
+        <%= error_tag f, :password %>
     </div>
     <%= submit "Create Account", class: "btn btn-primary" %>
 <% end %>

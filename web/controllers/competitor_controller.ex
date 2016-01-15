@@ -19,10 +19,13 @@ defmodule GenComp.CompetitorController do
 
     def create(conn, %{"competitor" => competitor_params}) do
         changeset = Competitor.changeset(%Competitor{}, competitor_params)
-        {:ok, competitor} = Repo.insert(changeset)
-
-        conn
-        |> put_flash(:info, "#{competitor.first_name} #{competitor.last_name} has registered!")
-        |> redirect(to: competitor_path(conn, :index))
+        case Repo.insert(changeset) do
+            {:ok, competitor} ->
+                conn
+                |> put_flash(:info, "#{competitor.first_name} #{competitor.last_name} has registered!")
+                |> redirect(to: competitor_path(conn, :index))
+            {:error, changeset} ->
+                render(conn, "new.html", changeset: changeset)
+        end
     end
 end
