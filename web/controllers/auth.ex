@@ -19,6 +19,10 @@ defmodule GenComp.Auth do
         |> configure_session(renew: true)
     end
 
+    def logout(conn) do
+        configure_session(conn, drop: true)
+    end
+
     def login_with_email_and_pass(conn, email, given_pass, opts) do
         repo = Keyword.fetch!(opts, :repo)
         competitor = repo.get_by(GenComp.Competitor, email: email)

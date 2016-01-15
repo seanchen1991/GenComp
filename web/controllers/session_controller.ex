@@ -17,4 +17,11 @@ defmodule GenComp.SessionController do
                 |> render("new.html")
         end
     end
+
+    def delete(conn, _) do
+        conn
+        |> GenComp.Auth.logout()
+        |> put_flash(:info, "You have been logged out.")
+        |> redirect(to: page_path(conn, :index))
+    end
 end
